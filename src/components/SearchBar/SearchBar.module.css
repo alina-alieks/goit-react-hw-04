@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(44, 44, 199);
+  padding: 16px 0;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fafafa;
+  max-width: 320px;
+}
+
+.input {
+  width: 300px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: inherit;
+}
+.input::placeholder {
+  color: rgb(131, 170, 255);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 5px 12px;
+  background-color: inherit;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  color: rgb(44, 44, 199);
+  padding: 0;
+  margin: 0;
+}
