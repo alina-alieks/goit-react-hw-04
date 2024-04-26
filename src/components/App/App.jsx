@@ -16,6 +16,7 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [src, setSrc] = useState("");
+  const [totalPage, setTotalPage] = useState(0);
 
   function openModal() {
     setIsOpen(true);
@@ -26,11 +27,21 @@ export default function App() {
   }
 
   function getImage(value) {
-    // console.log(value);
     setSrc(value);
   }
+
+  function goBack() {
+    // images.map((image, index) => {
+    //   index - 1;
+    //   return console.log(getImage(image.urls.regular));
+    // });
+  }
+
+  function goForward() {
+    // images.map((image, index) => (index + 1, getImage(image.urls.regular)));
+  }
+
   const handleSearch = (query) => {
-    // console.log("handleSearch", query);
     setError(false);
     setImages([]);
     setPage(1);
@@ -49,8 +60,8 @@ export default function App() {
       try {
         setIsLoading(true);
         const data = await apiRequest(query, page);
-        setImages((prevData) => [...prevData, ...data]);
-        console.log("getImages", query);
+        setImages((prevData) => [...prevData, ...data.response]);
+        setTotalPage(data.totalPage);
       } catch (error) {
         setError(true);
       } finally {
@@ -59,7 +70,6 @@ export default function App() {
     }
     getImages();
   }, [query, page]);
-
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
@@ -72,11 +82,17 @@ export default function App() {
       {error && (
         <p className={css.errorText}>Oops... It is error. Please try again!</p>
       )}
-      {images.length > 0 && !isLoading && (
+      {images.length > 0 && !isLoading && page <= totalPage && (
         <LoadMoreBtn onClick={handleLoadMore} />
       )}
       {isOpen && (
-        <ImageModal onCloseModal={closeModal} isOpen={openModal} src={src} />
+        <ImageModal
+          onCloseModal={closeModal}
+          isOpen={openModal}
+          src={src}
+          onBack={goBack}
+          onForward={goForward}
+        />
       )}
     </>
   );

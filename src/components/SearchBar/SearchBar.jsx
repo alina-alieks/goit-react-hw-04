@@ -19,7 +19,6 @@ export default function SearchBar({ onSubmit }) {
       return notice();
     }
     onSubmit(searchInput);
-    console.log(e.target.elements.searchWord.value);
     return;
   };
 

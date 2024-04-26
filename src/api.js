@@ -9,10 +9,13 @@ export default async function apiRequest(value, currentPage) {
       client_id: ACCESS_KEY,
       query: value,
       page: currentPage,
-      per_page: 20,
+      per_page: 12,
       orientation: "landscape",
       lang: "en",
     },
   });
-  return response.data.results;
+  return {
+    response: response.data.results,
+    totalPage: response.data.total_pages,
+  };
 }
