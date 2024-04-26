@@ -13,7 +13,7 @@ export default function ImageCard({
         onGetImage(urls.regular);
       }}
     >
-      <img className={css.img} src={image.urls.small} alt={description} />
+      <img className={css.img} src={urls.small} alt={description} />
     </div>
   );
 }
