@@ -6,14 +6,16 @@ export default function ImageCard({
   onGetImage,
 }) {
   return (
-    <div
-      className={css.imgCard}
-      onClick={() => {
-        onOpenModal();
-        onGetImage(urls.regular);
-      }}
-    >
-      <img className={css.img} src={urls.small} alt={description} />
+    <div className={css.imgCard}>
+      <img
+        className={css.img}
+        src={urls.small}
+        alt={description}
+        onClick={() => {
+          onOpenModal();
+          onGetImage(urls.regular);
+        }}
+      />
     </div>
   );
 }

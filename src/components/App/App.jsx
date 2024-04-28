@@ -7,6 +7,7 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../ImageModal/ImageModal";
 
 import css from "./App.module.css";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function App() {
   const [images, setImages] = useState([]);
@@ -28,17 +29,6 @@ export default function App() {
 
   function getImage(value) {
     setSrc(value);
-  }
-
-  function goBack() {
-    // images.map((image, index) => {
-    //   index - 1;
-    //   return console.log(getImage(image.urls.regular));
-    // });
-  }
-
-  function goForward() {
-    // images.map((image, index) => (index + 1, getImage(image.urls.regular)));
   }
 
   const handleSearch = (query) => {
@@ -79,9 +69,7 @@ export default function App() {
         onGetImage={getImage}
       />
       {isLoading && <Loader />}
-      {error && (
-        <p className={css.errorText}>Oops... It is error. Please try again!</p>
-      )}
+      {error && <ErrorMessage />}
       {images.length > 0 && !isLoading && page <= totalPage && (
         <LoadMoreBtn onClick={handleLoadMore} />
       )}
