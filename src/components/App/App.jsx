@@ -74,7 +74,7 @@ export default function App() {
         <LoadMoreBtn onClick={handleLoadMore} />
       )}
       {isOpen && (
-        <ImageModal onCloseModal={closeModal} isOpen={openModal} src={src} />
+        <ImageModal onCloseModal={closeModal} isOpen={isOpen} src={src} />
       )}
     </>
   );
